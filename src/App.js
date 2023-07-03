@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import peliculasJson from './peliculas.json';
+import PageWrapper from './pageWrapper';
+import Pelicula from './pelicula';
 
 function App() {
+  let peliculas = peliculasJson;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PageWrapper>
+       
+       
+       { peliculas.map( pelicula =>
+         <Pelicula img={pelicula.img} titulo={pelicula.titulo} 
+          calificacion={pelicula.calificacion} director={pelicula.director}
+           actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}
+         >
+            {pelicula.descripcion}
+          </Pelicula>
+
+       )
+
+       }
+        
+
+       
+      </PageWrapper>
+
     </div>
   );
 }
