@@ -1,34 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import peliculasJson from './peliculas.json';
-import PageWrapper from './pageWrapper';
-import Pelicula from './pelicula';
+
+import {  BrowserRouter,  Route, Routes} from 'react-router-dom';
+// Routes :instead of "Switch"
+import ListadoPeliculas from './views/ListadoPeliculas';
+import Blog from './views/Blog';
+
+  
 
 function App() {
-  let peliculas = peliculasJson;
-  return (
-    <div>
-      <PageWrapper>
-       
-       
-       { peliculas.map( pelicula =>
-         <Pelicula img={pelicula.img} titulo={pelicula.titulo} 
-          calificacion={pelicula.calificacion} director={pelicula.director}
-           actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}
-         >
-            {pelicula.descripcion}
-          </Pelicula>
-
-       )
-
-       }
-        
-
-       
-      </PageWrapper>
-
-    </div>
-  );
+ 
+  return ( 
+  
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<ListadoPeliculas/>}/>   
+      <Route path="/blog" element={<Blog/>}/>        
+    </Routes>
+  </BrowserRouter>
+   );
 }
 
 export default App;
